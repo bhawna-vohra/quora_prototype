@@ -1,0 +1,22 @@
+{% extends 'quora/base.html' %}
+{% load static %}
+
+{% block body_block %}
+
+<div class="jumbotron">
+	{% if logged_in %}
+        <h1>Welcome {{ user_data.username }} </h1>
+	{% else %}
+		<h1>Login Here!</h1>
+		<h3>Enter your login details:</h3>
+		<form enctype="multipart/form-data" method="post">
+	     {% csrf_token %}		
+         {{ user_entry.as_p }}
+         <input type="submit" name="" value="Login">
+		</form>
+	{% endif %}
+	
+	
+</div>
+
+{% endblock %}
